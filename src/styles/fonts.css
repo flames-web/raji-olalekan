@@ -1,0 +1,7 @@
+@import "@fontsource/inter";
+@import "@fontsource/dm-sans";
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+}
