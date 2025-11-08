@@ -84,11 +84,21 @@ button {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   backdrop-filter: blur(18px);
   background: var(--bg-alt);
   border-bottom: 1px solid var(--border);
   transition: background var(--transition), border var(--transition);
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(129, 140, 248, 0), rgba(129, 140, 248, 0.6), rgba(129, 140, 248, 0));
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .navbar-inner {
@@ -104,6 +114,25 @@ button {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.92rem;
+}
+
+.brand-wrapper {
+  display: grid;
+  gap: 0.35rem;
+  align-items: start;
+}
+
+.brand-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.brand-tags .chip {
+  font-size: 0.68rem;
+  padding: 0.3rem 0.65rem;
+  letter-spacing: 0.06em;
 }
 
 .navbar-right {
@@ -131,6 +160,29 @@ button {
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--text);
+  background: var(--accent-soft);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  background: linear-gradient(120deg, rgba(129, 140, 248, 0.16), rgba(129, 140, 248, 0.08));
+  backdrop-filter: blur(12px);
+  transition: transform var(--transition), border var(--transition), background var(--transition);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(129, 140, 248, 0.6);
   background: var(--accent-soft);
 }
 
@@ -300,6 +352,10 @@ button {
   font-weight: 600;
   text-transform: uppercase;
   color: var(--text-subtle);
+}
+
+.panel-stack .chip {
+  background: transparent;
 }
 
 .panel-stack span {
@@ -495,6 +551,17 @@ button {
   font-size: 1.05rem;
 }
 
+.project-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.project-year {
+  font-size: 0.7rem;
+}
+
 .project-card p {
   margin: 0;
   color: var(--text-subtle);
@@ -512,6 +579,49 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.certification-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.certification-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.certification-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.certification-card p {
+  margin: 0;
+  color: var(--text-subtle);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cert-provider {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.chip-gradient {
+  background: var(--gradient);
+  border: none;
+  color: #fff;
 }
 
 .contact-card {
@@ -604,17 +714,32 @@ button {
   }
 
   .hero-panel {
-    order: -1;
+    order: 1;
   }
 
   .nav-links {
     display: none;
+  }
+
+  .navbar-right {
+    gap: 0.8rem;
   }
 }
 
 @media (max-width: 640px) {
   .container {
     padding: 0 1.2rem;
+  }
+
+  .navbar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .navbar-right {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .hero {

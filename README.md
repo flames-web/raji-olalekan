@@ -1,13 +1,13 @@
 # Raji Olalekan Portfolio
 
-Modern React (Vite + TypeScript) portfolio for backend engineer Raji Olalekan.
+Modern React (Vite + TypeScript) portfolio for full stack developer (backend-first) Raji Olalekan.
 
 ## Highlights
 - React 18 + TypeScript with Vite tooling
 - Theme toggle (light / dark) with persistence
 - Refined glassmorphic design and subtle depth cues
 - Framer Motion powered reveal + scroll interactions
-- Sections: Hero, Skills, Impact stats, Experience timeline, Projects, Contact
+- Sections: Hero, Skills, Impact stats, Experience timeline, Projects, Certifications, Contact
 - All copy and link metadata managed from `app/src/data/data.ts`
 
 ## Quick Start

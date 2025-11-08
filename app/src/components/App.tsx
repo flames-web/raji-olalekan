@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import '../styles/global.css';
-import { profile, skills, projects, experience, achievements } from '../data/data';
+import { profile, skills, projects, experience, achievements, certifications, interests } from '../data/data';
 import { motion } from 'framer-motion';
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
@@ -16,28 +16,36 @@ export function App() {
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' }
   ], []);
 
   const heroHighlights = useMemo(() => [
-    { label: 'Location', value: profile.location },
-    { label: 'Specialty', value: 'Secure payment & API platforms' },
-    { label: 'Collaboration', value: 'Open to remote opportunities' }
+    { label: 'Primary focus', value: 'Backend-first full stack delivery' },
+    { label: 'Core stack', value: 'NestJS · Laravel · React' },
+    { label: 'Location', value: profile.location }
   ], []);
 
-  const backendStack = useMemo(() => skills.find(group => group.group === 'Backend')?.items.slice(0, 4) ?? [], []);
+  const backendStack = useMemo(() => skills.find(group => group.group === 'Backend & APIs')?.items.slice(0, 4) ?? [], []);
 
   return (
     <>
       <nav className="navbar" aria-label="Primary">
         <div className="container navbar-inner">
-          <a className="brand" href="#home">Raji Olalekan</a>
+          <div className="brand-wrapper">
+            <a className="brand" href="#home">Raji Olalekan</a>
+            <div className="brand-tags">
+              <span className="chip chip-ghost">Full Stack Developer</span>
+              <span className="chip chip-muted">Backend · Payments</span>
+            </div>
+          </div>
           <div className="navbar-right">
             <div className="nav-links">
               {navLinks.map(link => (
                 <a key={link.id} href={`#${link.id}`}>{link.label}</a>
               ))}
             </div>
+            <a className="nav-cta" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect</a>
             <button
               type="button"
               className="theme-toggle"
@@ -57,7 +65,7 @@ export function App() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
         >
           <motion.span className="hero-eyebrow" variants={fadeUp}>{profile.role}</motion.span>
-          <motion.h1 variants={fadeUp}>Building resilient fintech backends that scale securely.</motion.h1>
+          <motion.h1 variants={fadeUp}>Delivering full stack products with backend craftsmanship.</motion.h1>
           <motion.p variants={fadeUp}>{profile.summary}</motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a className="btn btn-primary" href="#projects">View projects</a>
@@ -82,7 +90,7 @@ export function App() {
         >
           <div className="panel-heading">
             <span>Impact snapshot</span>
-            <p>Trusted to launch payment-ready platforms with resilience baked in.</p>
+            <p>Trusted to launch payment-ready platforms with cohesive frontends and resilient APIs.</p>
           </div>
           <div className="panel-stats">
             {achievements.slice(0, 2).map(stat => (
@@ -134,7 +142,7 @@ export function App() {
           </div>
         </section>
 
-        <section className="section container" aria-label="Impact metrics">
+  <section id="impact" className="section container" aria-label="Impact metrics">
           <div className="grid stats-grid">
             {achievements.map(stat => (
               <motion.div
@@ -190,7 +198,7 @@ export function App() {
           </div>
         </section>
 
-        <section id="projects" className="section container">
+  <section id="projects" className="section container">
           <div className="section-heading">
             <span>Selected work</span>
             <h2>Secure, performant products launched</h2>
@@ -209,6 +217,7 @@ export function App() {
               >
                 <header>
                   <h3>{project.title}</h3>
+                  <span className="chip chip-muted project-year">{project.year}</span>
                 </header>
                 <p>{project.description}</p>
                 <div className="project-tech">
@@ -229,12 +238,45 @@ export function App() {
           <div className="card contact-card">
             <span className="badge">Let us collaborate</span>
             <h2>Ready to build your next platform</h2>
-            <p>Open to backend engineering roles, API architecture consulting, and any collaboration that demands reliable infrastructure.</p>
+            <p>Open to full stack roles with backend leadership, API architecture consulting, and collaborations that demand reliable infrastructure.</p>
+            {interests.length > 0 && (
+              <div className="interest-tags" aria-label="Personal interests">
+                {interests.map(interest => (
+                  <span key={interest} className="chip chip-gradient">{interest}</span>
+                ))}
+              </div>
+            )}
             <div className="contact-links">
               <a className="btn btn-primary" href={`mailto:${profile.email}`}>Email me</a>
               <a className="btn btn-outline" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
               <a className="btn btn-outline" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
+          </div>
+        </section>
+
+        <section id="certifications" className="section container">
+          <div className="section-heading">
+            <span>Lifelong learning</span>
+            <h2>Continuous upskilling & credentials</h2>
+            <p>Relevant courses and certifications that inform architecture decisions and developer experience leadership.</p>
+          </div>
+          <div className="grid certification-grid">
+            {certifications.map(cert => (
+              <motion.article
+                key={`${cert.title}-${cert.year}`}
+                className="card certification-card"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                transition={{ duration: 0.35 }}
+              >
+                <span className="chip chip-muted">{cert.year}</span>
+                <h3>{cert.title}</h3>
+                <p className="cert-provider">{cert.provider}</p>
+                <p>{cert.description}</p>
+              </motion.article>
+            ))}
           </div>
         </section>
       </main>
