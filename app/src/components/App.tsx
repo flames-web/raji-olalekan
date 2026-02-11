@@ -1,6 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
 import '../styles/global.css';
-import { profile, skills, projects, experience, achievements, certifications, interests } from '../data/data';
+import {
+  profile,
+  skills,
+  projects,
+  architecturalProjects,
+  experience,
+  achievements,
+  keyAchievements,
+  education,
+  certifications,
+  interests
+} from '../data/data';
 import { motion } from 'framer-motion';
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
@@ -15,16 +26,18 @@ export function App() {
   const navLinks = useMemo(() => [
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
+    { id: 'architecture', label: 'Architecture' },
     { id: 'projects', label: 'Projects' },
+    { id: 'education', label: 'Education' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' }
   ], []);
 
   const heroHighlights = useMemo(() => [
-    { label: 'Primary focus', value: 'Backend-first full stack delivery' },
-    { label: 'Core stack', value: 'NestJS · Laravel · React' },
+    { label: 'Focus', value: 'Fintech & distributed systems' },
+    { label: 'Reach', value: '100+ businesses · 5k+ users' },
     { label: 'Location', value: profile.location }
-  ], []);
+  ], [profile.location]);
 
   const backendStack = useMemo(() => skills.find(group => group.group === 'Backend & APIs')?.items.slice(0, 4) ?? [], []);
 
@@ -65,12 +78,16 @@ export function App() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
         >
           <motion.span className="hero-eyebrow" variants={fadeUp}>{profile.role}</motion.span>
-          <motion.h1 variants={fadeUp}>Delivering full stack products with backend craftsmanship.</motion.h1>
+          <motion.h1 variants={fadeUp}>Architecting secure payment infrastructure for high-scale platforms.</motion.h1>
           <motion.p variants={fadeUp}>{profile.summary}</motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a className="btn btn-primary" href="#projects">View projects</a>
-            <a className="btn btn-outline" href={profile.resumeUrl}>Download CV</a>
+            <a className="btn btn-outline" href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">Download CV</a>
             <a className="btn btn-outline" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </motion.div>
+          <motion.div className="hero-contact" variants={fadeUp}>
+            <span>{profile.phone}</span>
+            <span>{profile.email}</span>
           </motion.div>
           <motion.ul className="hero-highlights" variants={fadeUp}>
             {heroHighlights.map(item => (
@@ -90,7 +107,7 @@ export function App() {
         >
           <div className="panel-heading">
             <span>Impact snapshot</span>
-            <p>Trusted to launch payment-ready platforms with cohesive frontends and resilient APIs.</p>
+            <p>High-availability transaction platforms, multi-tenant systems, and secure webhook orchestration.</p>
           </div>
           <div className="panel-stats">
             {achievements.slice(0, 2).map(stat => (
@@ -115,8 +132,8 @@ export function App() {
         <section id="skills" className="section container">
           <div className="section-heading">
             <span>Capabilities</span>
-            <h2>Coverage from architecture to delivery</h2>
-            <p>Tooling and technologies used to ship dependable experiences across fintech and platform products.</p>
+            <h2>Backend-first expertise with fintech depth</h2>
+            <p>Architectural patterns, infrastructure tooling, and security practices that keep critical systems reliable.</p>
           </div>
           <div className="grid skill-grid">
             {skills.map(group => (
@@ -165,7 +182,7 @@ export function App() {
           <div className="section-heading">
             <span>Experience</span>
             <h2>Leading backend initiatives end-to-end</h2>
-            <p>Roles that highlight architecture ownership, payments expertise, and secure delivery across fast-moving teams.</p>
+            <p>Ownership of PCI-aware payment systems, multi-role admin consoles, and event-driven services.</p>
           </div>
           <div className="experience-grid">
             {experience.map(role => (
@@ -198,11 +215,35 @@ export function App() {
           </div>
         </section>
 
-  <section id="projects" className="section container">
+        <section id="architecture" className="section container">
+          <div className="section-heading">
+            <span>Key architectural projects</span>
+            <h2>Distributed systems designed for scale</h2>
+            <p>Core platform initiatives that demonstrate multi-tenant orchestration, payment resilience, and external integrations.</p>
+          </div>
+          <div className="grid architecture-grid">
+            {architecturalProjects.map(project => (
+              <motion.article
+                key={project.title}
+                className="card architecture-card"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                transition={{ duration: 0.35 }}
+              >
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="projects" className="section container">
           <div className="section-heading">
             <span>Selected work</span>
-            <h2>Secure, performant products launched</h2>
-            <p>Backends that balance robustness, compliance, and developer ergonomics.</p>
+            <h2>Secure, compliant platforms launched</h2>
+            <p>High-scale fintech and booking solutions aligned to the experience timeline.</p>
           </div>
           <div className="grid project-grid">
             {projects.map(project => (
@@ -234,23 +275,51 @@ export function App() {
           </div>
         </section>
 
-        <section id="contact" className="section container">
-          <div className="card contact-card">
-            <span className="badge">Let us collaborate</span>
-            <h2>Ready to build your next platform</h2>
-            <p>Open to full stack roles with backend leadership, API architecture consulting, and collaborations that demand reliable infrastructure.</p>
-            {interests.length > 0 && (
-              <div className="interest-tags" aria-label="Personal interests">
-                {interests.map(interest => (
-                  <span key={interest} className="chip chip-gradient">{interest}</span>
-                ))}
-              </div>
-            )}
-            <div className="contact-links">
-              <a className="btn btn-primary" href={`mailto:${profile.email}`}>Email me</a>
-              <a className="btn btn-outline" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a className="btn btn-outline" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
+        <section id="achievements" className="section container">
+          <div className="section-heading">
+            <span>Key achievements</span>
+            <h2>Measurable backend impact</h2>
+            <p>Performance, architecture, and business outcomes delivered across fintech and booking systems.</p>
+          </div>
+          <div className="grid achievement-grid">
+            {keyAchievements.map(item => (
+              <motion.article
+                key={item}
+                className="card achievement-card"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                transition={{ duration: 0.35 }}
+              >
+                <p>{item}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="education" className="section container">
+          <div className="section-heading">
+            <span>Education</span>
+            <h2>Academic foundation & professional development</h2>
+            <p>Engineering background with focused upskilling in backend architecture.</p>
+          </div>
+          <div className="grid education-grid">
+            {education.map(item => (
+              <motion.article
+                key={item.title}
+                className="card education-card"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                transition={{ duration: 0.35 }}
+              >
+                <h3>{item.title}</h3>
+                <p className="education-meta">{item.institution}</p>
+                <p>{item.details}</p>
+              </motion.article>
+            ))}
           </div>
         </section>
 
@@ -277,6 +346,31 @@ export function App() {
                 <p>{cert.description}</p>
               </motion.article>
             ))}
+          </div>
+        </section>
+
+        <section id="contact" className="section container">
+          <div className="card contact-card">
+            <span className="badge">Let us collaborate</span>
+            <h2>Ready to architect your next payment platform</h2>
+            <p>Available for senior backend roles, fintech infrastructure consulting, and distributed systems initiatives.</p>
+            <div className="contact-meta">
+              <span>{profile.location}</span>
+              <span>{profile.phone}</span>
+              <span>{profile.email}</span>
+            </div>
+            {interests.length > 0 && (
+              <div className="interest-tags" aria-label="Personal interests">
+                {interests.map(interest => (
+                  <span key={interest} className="chip chip-gradient">{interest}</span>
+                ))}
+              </div>
+            )}
+            <div className="contact-links">
+              <a className="btn btn-primary" href={`mailto:${profile.email}`}>Email me</a>
+              <a className="btn btn-outline" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a className="btn btn-outline" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </div>
         </section>
       </main>
