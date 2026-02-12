@@ -8,7 +8,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/olalekan-raji-8583452a3/',
   portfolio: 'Portfolio URL',
   summary: `Strategic Senior Backend Engineer with 4+ years of experience architecting high-scale fintech and multi-service booking ecosystems. Expert in designing PCI-aware payment cores, complex multi-role administrative consoles, and event-driven microservices using NestJS, Node.js, and AWS. Proven track record in orchestrating multi-tenant architectures serving 100+ businesses and 500+ active users. Specialized in high-availability transaction processing, secure Webhook orchestration, and third-party integrations (PMS/eZee/Opera).`,
-  resumeUrl: 'https://docs.google.com/document/d/1OyWDTvl8L78o9DdczjZAggorXopiSNOGWP9h-M-qZhI/edit?tab=t.0'
+  resumeUrl: 'https://docs.google.com/document/d/1NjjGQqN7Mq7sa6ii3UDG4YnYebAT1TBkiF4Xpo7rRYc/edit?tab=t.0'
 };
 
 export const skills = [
