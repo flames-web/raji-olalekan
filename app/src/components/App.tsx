@@ -13,6 +13,7 @@ import {
   interests
 } from '../data/data';
 import { motion } from 'framer-motion';
+import profileImage from '../assets/profile.png';
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
@@ -35,7 +36,7 @@ export function App() {
 
   const heroHighlights = useMemo(() => [
     { label: 'Focus', value: 'Fintech & distributed systems' },
-    { label: 'Reach', value: '100+ businesses · 5k+ users' },
+    { label: 'Reach', value: '100+ businesses · 500+ users' },
     { label: 'Location', value: profile.location }
   ], [profile.location]);
 
@@ -48,8 +49,8 @@ export function App() {
           <div className="brand-wrapper">
             <a className="brand" href="#home">Raji Olalekan</a>
             <div className="brand-tags">
-              <span className="chip chip-ghost">Full Stack Developer</span>
-              <span className="chip chip-muted">Backend · Payments</span>
+              <span className="chip chip-ghost">Senior Backend Engineer</span>
+              <span className="chip chip-muted">Fintech · Distributed Systems</span>
             </div>
           </div>
           <div className="navbar-right">
@@ -58,14 +59,16 @@ export function App() {
                 <a key={link.id} href={`#${link.id}`}>{link.label}</a>
               ))}
             </div>
-            <a className="nav-cta" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect</a>
-            <button
-              type="button"
-              className="theme-toggle"
-              onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-            </button>
+            <div className="nav-actions">
+              <a className="nav-cta" href={profile.linkedin} target="_blank" rel="noopener noreferrer">Connect</a>
+              <button
+                type="button"
+                className="theme-toggle"
+                onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -99,33 +102,47 @@ export function App() {
           </motion.ul>
         </motion.div>
 
-        <motion.div
-          className="hero-panel"
-          initial={{ opacity: 0, scale: 0.96, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="panel-heading">
-            <span>Impact snapshot</span>
-            <p>High-availability transaction platforms, multi-tenant systems, and secure webhook orchestration.</p>
-          </div>
-          <div className="panel-stats">
-            {achievements.slice(0, 2).map(stat => (
-              <div key={stat.label} className="panel-stat">
-                <strong>{stat.value}{stat.suffix ?? ''}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-          <div className="panel-stack">
-            <span>Core stack</span>
-            <div className="stack-chips">
-              {backendStack.map(item => (
-                <span key={item} className="chip">{item}</span>
+        <div className="hero-visual">
+          <motion.div
+            className="hero-photo-card"
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+          >
+            <img className="hero-photo" src={profileImage} alt={`${profile.name} portrait`} />
+            <div className="hero-photo-meta">
+              <span>{profile.name}</span>
+              <span>{profile.role}</span>
+            </div>
+          </motion.div>
+          <motion.div
+            className="hero-panel"
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="panel-heading">
+              <span>Impact snapshot</span>
+              <p>High-availability transaction platforms, multi-tenant systems, and secure webhook orchestration.</p>
+            </div>
+            <div className="panel-stats">
+              {achievements.slice(0, 2).map(stat => (
+                <div key={stat.label} className="panel-stat">
+                  <strong>{stat.value}{stat.suffix ?? ''}</strong>
+                  <span>{stat.label}</span>
+                </div>
               ))}
             </div>
-          </div>
-        </motion.div>
+            <div className="panel-stack">
+              <span>Core stack</span>
+              <div className="stack-chips">
+                {backendStack.map(item => (
+                  <span key={item} className="chip">{item}</span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </header>
 
       <main>

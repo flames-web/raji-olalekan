@@ -7,7 +7,7 @@ export const profile = {
   github: 'https://github.com/flames-web',
   linkedin: 'https://www.linkedin.com/in/olalekan-raji-8583452a3/',
   portfolio: 'Portfolio URL',
-  summary: `Strategic Senior Backend Engineer with 4+ years of experience architecting high-scale fintech and multi-service booking ecosystems. Expert in designing PCI-aware payment cores, complex multi-role administrative consoles, and event-driven microservices using NestJS, Node.js, and AWS. Proven track record in orchestrating multi-tenant architectures serving 100+ businesses and 5,000+ active users. Specialized in high-availability transaction processing, secure webhook orchestration, and third-party integrations (PMS/eZee/Opera).`,
+  summary: `Strategic Senior Backend Engineer with 4+ years of experience architecting high-scale fintech and multi-service booking ecosystems. Expert in designing PCI-aware payment cores, complex multi-role administrative consoles, and event-driven microservices using NestJS, Node.js, and AWS. Proven track record in orchestrating multi-tenant architectures serving 100+ businesses and 500+ active users. Specialized in high-availability transaction processing, secure Webhook orchestration, and third-party integrations (PMS/eZee/Opera).`,
   resumeUrl: 'https://docs.google.com/document/d/1OyWDTvl8L78o9DdczjZAggorXopiSNOGWP9h-M-qZhI/edit?tab=t.0'
 };
 
@@ -29,7 +29,7 @@ export const skills = [
   },
   {
     group: 'Fintech & Payments',
-    items: ['Paystack/Stripe Integration', 'Webhook Lifecycle Management', 'Double-Entry Bookkeeping', 'PCI-DSS Compliance', 'Fraud Mitigation']
+    items: ['Paystack/Stripe Integration', 'Webhook Lifecycle Management', 'Double-Entry Bookkeeping Logic', 'PCI-DSS Compliance', 'Fraud Mitigation']
   },
   {
     group: 'Infrastructure & DevOps',
@@ -97,10 +97,10 @@ export const experience = [
     company: 'MyPal Business Platform',
     period: 'Dec 2024 - Present',
     bullets: [
-      'Architected a multi-service booking ecosystem spanning fine dining, buffets, accommodation, and attractions for 5,000+ active users and 100+ businesses.',
-      'Engineered a triple-console administrative suite for business admins, internal platform admins, and mobile API consumers with JWT role guards and RBAC.',
+  'Architected a multi-service booking ecosystem spanning Fine Dining, Buffets, Accommodation, and Attractions, managing a complex PostgreSQL/MySQL backend for 500+ active users and 100+ businesses.',
+  'Engineered a triple-console administrative suite, designing separate secure interfaces for Business Admins, Internal Platform Admins, and Mobile API consumers using JWT-based role guards and RBAC.',
       'Designed a three-level service category system with self-referencing TypeORM repositories to enable dynamic business-specific customization.',
-      'Integrated PMS providers (eZee, Opera) with bi-directional sync for room rates, inventory, and booking availability.',
+  'Integrated third-party Property Management Systems (PMS) including eZee and Opera, orchestrating bidirectional synchronization of room rates, inventory, and real-time booking availability.',
       'Optimized AWS media pipelines with server-side compression and S3 tiering, cutting storage costs by 60%.',
       'Orchestrated an event-driven notification engine using Redis Pub/Sub and Firebase for sub-100ms delivery.'
     ],
@@ -112,9 +112,9 @@ export const experience = [
     period: 'Nov 2022 - Jan 2024',
     bullets: [
       'Developed a PCI-aware payment core supporting wallets, gift cards, and automated merchant payouts with 99.9% success rate.',
-      'Automated financial reconciliation by integrating Stripe and Paystack webhooks, reducing manual discrepancies by 90%.',
-      'Improved throughput by 40% through MongoDB aggregation indexing and Redis caching of high-read endpoints.',
-      'Strengthened system security with MFA, API rate limiting, and observability endpoints to reduce fraud vectors.',
+  'Automated financial reconciliation workflows by integrating Stripe and Paystack webhooks, reducing manual accounting discrepancies by 90%.',
+  'Improved system throughput by 40% through advanced MongoDB aggregation indexing and strategic Redis caching of high-read transaction endpoints.',
+  'Strengthened system security by implementing MFA, API rate limiting, and observability endpoints, effectively reducing fraud vectors and stabilizing uptime.',
       'Delivered monitoring services tracking memory, disk, database connections, and third-party API availability.'
     ],
     stack: ['NestJS', 'MongoDB', 'Stripe', 'Paystack', 'Redis', 'Docker', 'AWS']
@@ -124,8 +124,8 @@ export const experience = [
     company: 'Measurement CV Project',
     period: 'Aug 2023 - Dec 2023',
     bullets: [
-      'Architected secure APIs to orchestrate FastAPI-based computer vision microservices for landmark detection and 3D measurements.',
-      'Implemented JWT-based RBAC to segregate stylist vs. client data access for privacy and compliance.'
+  'Architected secure APIs to orchestrate FastAPI-based computer vision microservices for AI-assisted landmark detection and 3D measurements.',
+  'Implemented JWT-based RBAC to strictly segregate stylist vs. client data access, ensuring data privacy and compliance.'
     ],
     stack: ['NestJS', 'FastAPI', 'Prisma', 'MongoDB', 'JWT']
   },
@@ -134,7 +134,7 @@ export const experience = [
     company: 'KampusPlaza E-commerce',
     period: 'Aug 2022 - Dec 2022',
     bullets: [
-      'Shipped a high-performance Laravel marketplace with complex inventory logic and automated order lifecycle management.',
+  'Shipped a high-performance Laravel marketplace featuring complex inventory logic and automated order lifecycle management via Paystack webhooks.',
       'Implemented Paystack webhooks to power secure checkout flows and order reconciliation.'
     ],
     stack: ['Laravel', 'PHP', 'MySQL', 'Paystack']
@@ -143,15 +143,15 @@ export const experience = [
 
 export const achievements = [
   { label: 'Businesses Enabled', value: 100, suffix: '+' },
-  { label: 'Active Users', value: 5000, suffix: '+' },
+  { label: 'Active Users', value: 500, suffix: '+' },
   { label: 'Payment Success Rate', value: 99.9, suffix: '%' },
   { label: 'Core API Latency', value: 120, suffix: 'ms' }
 ];
 
 export const keyAchievements = [
-  'Architecture Transformation: migrated a monolith into a modular NestJS ecosystem, improving deployment velocity by 50%.',
-  'Performance Engineering: reduced core API latency from 450ms to 120ms through profiling and query optimization.',
-  'Business Impact: enabled 500+ businesses to digitize operations and process thousands of reservations with zero financial data loss.'
+  'Architecture Transformation: Successfully migrated a monolithic structure into a Modular NestJS ecosystem, increasing team deployment velocity by 50%.',
+  'Performance Engineering: Reduced core API latency from 450ms to 120ms via database profiling and query optimization.',
+  'Business Impact: Empowered 100+ businesses to digitize operations, processing thousands of reservations with zero financial data loss.'
 ];
 
 export const education = [
@@ -166,13 +166,13 @@ export const certifications = [
   {
     title: 'Node.js Developer (Advanced)',
     provider: 'API Engineering & Backend Best Practices',
-    year: '2024',
+    year: '2022',
     description: 'Focused on scalable API architecture, observability, and production-grade backend practices.'
   },
   {
     title: 'TypeScript Software Architecture',
     provider: 'Large-scale System Design',
-    year: '2024',
+    year: '2022',
     description: 'Advanced TypeScript patterns for distributed systems and resilient backend services.'
   }
 ];

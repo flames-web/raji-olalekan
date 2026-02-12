@@ -7,7 +7,7 @@ Modern React (Vite + TypeScript) portfolio for full stack developer (backend-fir
 - Theme toggle (light / dark) with persistence
 - Refined glassmorphic design and subtle depth cues
 - Framer Motion powered reveal + scroll interactions
-- Sections: Hero, Skills, Impact stats, Experience timeline, Projects, Certifications, Contact
+- Sections: Hero, Skills, Impact stats, Experience timeline, Architecture highlights, Projects, Achievements, Education, Certifications, Contact
 - All copy and link metadata managed from `app/src/data/data.ts`
 
 ## Quick Start
